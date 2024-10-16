@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import movies from "../assets/mock.json";
+import movies from '../assets/mock.json';
 import ItemDetail from './ItemDetail';
+import styles from '../styles/itemDetailContainer.module.css';
 
 const ItemDetailContainer = () => {
     const { itemId } = useParams();
@@ -9,20 +10,20 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         const fetchItem = async () => {
-        const foundItem = movies.find(movie => movie.id === itemId);
-        setItem(foundItem);
+            const foundItem = movies.find(movie => movie.id === parseInt(itemId));
+            setItem(foundItem);
         };
 
-    fetchItem();
-}, [itemId]);
+        fetchItem();
+    }, [itemId]);
 
     return (
-        <div>
-        <h2>Item Details</h2>
-        <ItemDetail item={item} />
+        <div className={styles.container}>
+            {item ? <ItemDetail item={item} /> : <p>Loading...</p>}
         </div>
     );
 };
 
 export default ItemDetailContainer;
+
 

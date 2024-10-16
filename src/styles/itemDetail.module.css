@@ -1,0 +1,20 @@
+.itemDetail {
+    text-align: center;
+    padding: 20px;
+}
+
+.itemImage {
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.itemGenre, .itemDirector, .itemRating, .itemDuration, .itemProduction {
+    margin: 5px 0;
+}
+
+.itemDescription {
+    margin-top: 20px;
+    color: #555;
+}

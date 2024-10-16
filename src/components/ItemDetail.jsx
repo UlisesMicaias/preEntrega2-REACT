@@ -1,24 +1,21 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import styles from '../styles/itemDetail.module.css';
 
 const ItemDetail = ({ item }) => {
-    if (!item) {
-        return <p>Loading...</p>;
-    }
-
     return (
-        <div className="item-detail">
-        <img src={item.img_url} alt={item.title} />
-        <h2>{item.title}</h2>
-        <p><strong>Genre:</strong> {item.genre}</p>
-        <p><strong>Director:</strong> {item.director}</p>
-        <p><strong>Rating:</strong> {item.rating}</p>
-        <p><strong>Duration:</strong> {item.duration_minutes} minutes</p>
-        <p><strong>Production Company:</strong> {item.production_company}</p>
-        <p>{item.description}</p>
+        <div className={styles.itemDetail}>
+            <img className={styles.itemImage} src={item.img_url} alt={item.title} />
+            <h2 className={styles.itemTitle}>{item.title}</h2>
+            <p className={styles.itemGenre}><strong>Genre:</strong> {item.genre}</p>
+            <p className={styles.itemDirector}><strong>Director:</strong> {item.director}</p>
+            <p className={styles.itemRating}><strong>Rating:</strong> {item.rating}</p>
+            <p className={styles.itemDuration}><strong>Duration:</strong> {item.duration_minutes} mins</p>
+            <p className={styles.itemProduction}><strong>Production Company:</strong> {item.production_company}</p>
+            <p className={styles.itemDescription}>{item.description}</p>
         </div>
     );
 };
 
 export default ItemDetail;
+
 

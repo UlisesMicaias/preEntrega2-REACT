@@ -1,0 +1,61 @@
+.item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.itemImage {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.itemTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.itemDescription {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.itemDuration {
+    display: block;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.itemDetailButton {
+    text-decoration: none;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:active {
+    background-color: #003f7f;
+}

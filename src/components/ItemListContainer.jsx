@@ -7,7 +7,7 @@ import styles from '../styles/itemListContainer.module.css';
 const ItemListContainer = () => {
     const { categoryId } = useParams();
     const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true); // Para mostrar un estado de carga
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -36,7 +36,7 @@ const ItemListContainer = () => {
     return (
         <div className={styles.container}>
             <h2 className={styles.heading}>
-                {loading ? 'Loading...' : (categoryId ? `${categoryId.toUpperCase()} MOVIES` : 'All Movies')}
+                {loading ? 'Loading...' : (categoryId ? `${categoryId.toUpperCase()} MOVIES` : 'PELICULAS')}
             </h2>
             {!loading && <ItemList items={items} />}
         </div>

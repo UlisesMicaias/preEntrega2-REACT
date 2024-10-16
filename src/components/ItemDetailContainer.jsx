@@ -1,35 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import movies from "../assets/mock.json";
+import ItemDetail from './ItemDetail';
 
-
-const ItemListContainer = () => {
-    const { categoryId } = useParams();
-    const [items, setItems] = useState([]);
+const ItemDetailContainer = () => {
+    const { itemId } = useParams();
+    const [item, setItem] = useState(null);
 
     useEffect(() => {
-        const fetchItems = async () => {
-        const filteredItems = movies.filter((item) =>
-            categoryId ? item.genre.toLowerCase() === categoryId : true
-        );
-        setItems(filteredItems);
+        const fetchItem = async () => {
+        const foundItem = movies.find(movie => movie.id === itemId);
+        setItem(foundItem);
         };
 
-        fetchItems();
-    }, [categoryId]);
+    fetchItem();
+}, [itemId]);
 
     return (
         <div>
-        <h2>{categoryId ? `Category: ${categoryId}` : "All Items"}</h2>
-        <ul>
-            {items.map((item) => (
-            <li key={item.id}>
-                <Link to={`/item/${item.id}`}>{item.title}</Link>
-            </li>
-            ))}
-        </ul>
+        <h2>Item Details</h2>
+        <ItemDetail item={item} />
         </div>
     );
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;
+

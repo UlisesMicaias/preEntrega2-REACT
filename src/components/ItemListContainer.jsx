@@ -1,39 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import movies from "../assets/mock.json"
+import ItemList from './ItemList';
+import movies from "../assets/mock.json";
 
 const ItemListContainer = () => {
-    const { categoryId } = useParams(); // Get categoryId from the URL
+    const { categoryId } = useParams();
     const [items, setItems] = useState([]);
 
 useEffect(() => {
     const fetchItems = async () => {
-      // Simulate fetching data based on the categoryId
-    const filteredItems = movies.filter(item => item.genre.toLowerCase() === categoryId);
-    setItems(filteredItems);
+        if (categoryId) {
+            const filteredItems = movies.filter(item => item.genre.toLowerCase() === categoryId.toLowerCase());
+            setItems(filteredItems);
+        } else {
+            
+            setItems(movies);
+        }
     };
 
     fetchItems();
-    }, [categoryId]);
+}, [categoryId]);
 
     return (
         <div>
-        <h2>{categoryId} Items</h2>
-        <div>
-            {items.length ? (
-            items.map(item => (
-                <div key={item.title}>
-                <img src={item.img_url} alt={item.title} />
-                <p>{item.title}</p>
-                </div>
-            ))
-            ) : (
-            <p>No items available in this category.</p>
-            )}
-        </div>
+            <h2>{categoryId ? `${categoryId.toUpperCase()} MOVIES` : 'All Movies'}</h2>
+            <ItemList items={items} />
         </div>
     );
 };
 
 export default ItemListContainer;
-
